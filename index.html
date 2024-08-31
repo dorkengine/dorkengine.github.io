@@ -28,14 +28,17 @@
             <button onclick="runDork('site:google.com inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http')">Open Redirects</button>
             <button onclick="runDork('site:example.com ext:action | ext:struts | ext:do')">Apache STRUTS RCE</button>
             <button onclick="runDork('site:pastebin.com example.com')">Find Pastebin Entries</button>
+            <button onclick="runDork('inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:example.com')">API Docs</button>
             <button onclick="runDork('site:http://ideone.com | site:http://codebeautify.org | site:http://codeshare.io | site:http://codepen.io | site:http://repl.it | site:http://justpaste.it | site:http://pastebin.com | site:http://jsfiddle.net | site:http://trello.com | site:*.atlassian.net | site:bitbucket.org example.com')">3rd Party Exposure</button>
             <button onclick="runDork('inurl:gitlab example.com')">GitLab</button>
             <button onclick="runDork('inurl:example.com /.git')">.git folder</button>
             <button onclick="runDork('site:linkedin.com employees example.com')">Employees on LinkedIn</button>
             <button onclick="runDork('site:example.com.com inurl:/phpinfo.php | inurl:.htaccess')">.htaccess sensitive files</button>
+            <button onclick="runDork('site:jfrog.io &quot;example.com&quot;')">JFrog Artifactory</button>
             <button onclick="runDork('site:*.example.com')">Find Subdomains</button>
             <button onclick="runDork('site:*.*.example.com')">Find Sub-Subdomains</button>
             <button onclick="runDork('site:example.com inurl:wp-content | inurl:wp-includes')">Find WordPress #2</button>
+            <button onclick="runDork('site:*/server-status apache')">Apache Server Status</button>
             <button onclick="runDork('site:atlassian.net | site:bitbucket.org example.com')">Search in Bitbucket and Atlassian</button>
             <button onclick="runDork('site:stackoverflow.com example.com')">Search in Stackoverflow</button>
             <button onclick="runDork('https://github.com/search?q=%22*.example.com%22&type=host')">Search in GitHub</button>
@@ -44,14 +47,37 @@
             <button onclick="runDork('https://crt.sh/?q=%25.example.com')">Search in Crt.sh</button>
             <button onclick="runDork('http://wwwb-dedup.us.archive.org:8083/cdx/search?url=example.com/&matchType=domain&collapse=digest&output=text&fl=original,timestamp&filter=urlkey:.*wp[-].*&limit=1000000&xx=')">Find WordPress [Wayback Machine]</button>
             <button onclick="runDork('site:digitaloceanspaces.com example.com')">Digital Ocean Spaces </button>
+            <button onclick="runDork('site:firebaseio.com &quot;example.com&quot;')">Firebase</button>
+            <button onclick="runDork('site:.s3.amazonaws.com example.com')">s3 Bucket</button>
+            <button onclick="runDork('site:googleapis.com &quot;example.com&quot;')">Google APIs</button>
+            <button onclick="runDork('site:drive.google.com &quot;example.com&quot;')">Google drive</button>
+            <button onclick="runDork('site:dev.azure.com &quot;example.com&quot;')">Azure</button>
+            <button onclick="runDork('site:onedrive.live.com &quot;example.com&quot;')">OneDrive</button>
+            <button onclick="runDork('site:dropbox.com/s &quot;example.com&quot;')">DropBox</button>
+            <button onclick="runDork('site:docs.google.com inurl:&quot;/d/&quot; &quot;example.com&quot;')">Google Docs</button>
             <button onclick="runDork('https://web.archive.org/web/20240000000000*/(..example.com)')">Search in Web Archive #1</button>
             <button onclick="runDork('https://web.archive.org/web/*/example.com/*')">Search in Web Archive #2</button>
             <button onclick="runDork('https://viewdns.info/reverseip/?host=example.com&t=1')">Reverse IP Lookup </button>
             <button onclick="runDork('site:example.com intext:&quot;ArcGIS REST Services Directory&quot; intitle:&quot;Folder: /&quot;')">ArcGIS REST Services Directory</button>
+            <button onclick="runDork('site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json')">Juicy Extensions</button>
+            <button onclick="runDork('inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com')">XSS prone parameters</button>
+            <button onclick="runDork('site:example.com ”choose file”')">File upload endpoints</button>
+            <button onclick="runDork('site:example.com ext:txt | ext:pdf | ext:xml | ext:xls | ext:xlsx | ext:ppt | ext:pptx | ext:doc | ext:docx intext:“confidential” | intext:“Not for Public Release” | intext:”internal use only” | intext:“do not distribute”')">Sensitive Documents</button>
+            <button onclick="runDork('inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:example.com')">Sensitive Parameters</button>
+            <button onclick="runDork('inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:example.com')">SSRF Prone Parameters</button>
+            <button onclick="runDork('inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:example.com')">LFI Prone Parameters</button>
+            <button onclick="runDork('inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:example.com')">RCE Prone Parameters</button>
+            <button onclick="runDork('inurl:/content/usergenerated | inurl:/content/dam | inurl:/jcr:content | inurl:/libs/granite | inurl:/etc/clientlibs | inurl:/content/geometrixx | inurl:/bin/wcm | inurl:/crx/de site:example.com')">Adobe Experience Manager (AEM)</button>
+            <button onclick="runDork('site:groups.google.com &quot;example.com&quot;')">Google Groups</button>
 
             <!-- Add more buttons as needed -->
         </div>
     </div>
+
+    <div class="by-voizok">
+        by <a href="https://github.com/voizok" target="_blank">Voizok</a>
+    </div>
+        
     <script src="script.js"></script>
 </body>
 </html>
