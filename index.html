@@ -37,6 +37,18 @@
             <button onclick="runDork('site:*.*.example.com')">Find Sub-Subdomains</button>
             <button onclick="runDork('site:example.com inurl:wp-content | inurl:wp-includes')">Find WordPress #2</button>
             <button onclick="runDork('site:atlassian.net | site:bitbucket.org example.com')">Search in Bitbucket and Atlassian</button>
+            <button onclick="runDork('site:stackoverflow.com example.com')">Search in Stackoverflow</button>
+            <button onclick="runDork('https://github.com/search?q=%22*.example.com%22&type=host')">Search in GitHub</button>
+            <button onclick="runDork('https://www.openbugbounty.org/search/?search=example.com')">Search in OpenBugBounty</button>
+            <button onclick="runDork('https://www.reddit.com/search/?q=example.com&rdt=47774')">Search in Reddit</button>
+            <button onclick="runDork('https://crt.sh/?q=%25.example.com')">Search in Crt.sh</button>
+            <button onclick="runDork('http://wwwb-dedup.us.archive.org:8083/cdx/search?url=example.com/&matchType=domain&collapse=digest&output=text&fl=original,timestamp&filter=urlkey:.*wp[-].*&limit=1000000&xx=')">Find WordPress [Wayback Machine]</button>
+            <button onclick="runDork('site:digitaloceanspaces.com example.com')">Digital Ocean Spaces </button>
+            <button onclick="runDork('https://web.archive.org/web/20240000000000*/(..example.com)')">Search in Web Archive #1</button>
+            <button onclick="runDork('https://web.archive.org/web/*/example.com/*')">Search in Web Archive #2</button>
+            <button onclick="runDork('https://viewdns.info/reverseip/?host=example.com&t=1')">Reverse IP Lookup </button>
+            <button onclick="runDork('site:example.com intext:&quot;ArcGIS REST Services Directory&quot; intitle:&quot;Folder: /&quot;')">ArcGIS REST Services Directory</button>
+
             <!-- Add more buttons as needed -->
         </div>
     </div>
