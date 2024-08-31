@@ -1,6 +1,6 @@
 # Dork Engine
 
-Introducing "Dork Engine" - your ultimate bug bounty tool! Discover vulnerabilities and sensitive information effortlessly. This website revolutionizes the process by allowing you to open multiple Google Dorks with just one click. Unleash the power of efficient bug hunting and secure your target with ease
+Dork Engine is a web-based tool designed to facilitate advanced search queries, commonly known as "Google dorks," to uncover potential vulnerabilities and exposed information on target domains. This tool is particularly useful for security researchers, ethical hackers, and cybersecurity enthusiasts looking to perform reconnaissance and identify sensitive data or security misconfigurations.e
 
 ## Screenshot
 
