@@ -16,7 +16,27 @@
             <button onclick="runDork('site:example.com ext:sql | ext:dbf | ext:mdb')">Exposed Database files</button>
             <button onclick="runDork('site:example.com ext:log')">Exposed Log files</button>
             <button onclick="runDork('site:example.com inurl:wp- | inurl:wp-content | inurl:plugins | inurl:uploads | inurl:themes | inurl:download')">WordPress</button>
-            <button onclick="runDork(' site:example.com ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup')">Backup and old files</button>
+            <button onclick="runDork('site:example.com ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup')">Backup and old files</button>
+            <button onclick="runDork('site:example.com inurl:login')">Login Pages</button>
+            <button onclick="runDork('site:example.com intext:&quot;sql syntax near&quot; | intext:&quot;syntax error has occurred&quot; | intext:&quot;incorrect syntax near&quot; | intext:&quot;unexpected end of SQL command&quot; | intext:&quot;Warning: mysql_connect()&quot; | intext:&quot;Warning: mysql_query()&quot; | intext:&quot;Warning: pg_connect()&quot;')">SQL Errors</button>
+            <button onclick="runDork('site:example.com ext:doc | ext:docx | ext:odt | ext:pdf | ext:rtf | ext:sxw | ext:psw | ext:ppt | ext:pptx | ext:pps | ext:csv ')">Publicly Exposed Documents</button>
+            <button onclick="runDork('site:example.com filetype:config apache')">Apache config Files</button>
+            <button onclick="runDork('example.com/robots.txt')">Robots.txt</button>
+            <button onclick="runDork('site:example.com ext:php intitle:phpinfo published')">phpinfo</button>
+            <button onclick="runDork('site:example.com  inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor')">Finding Backdoors</button>
+            <button onclick="runDork('site:example.com  inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config')">Install/Setup Files</button>
+            <button onclick="runDork('site:google.com inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http')">Open Redirects</button>
+            <button onclick="runDork('site:example.com ext:action | ext:struts | ext:do')">Apache STRUTS RCE</button>
+            <button onclick="runDork('site:pastebin.com example.com')">Find Pastebin Entries</button>
+            <button onclick="runDork('site:http://ideone.com | site:http://codebeautify.org | site:http://codeshare.io | site:http://codepen.io | site:http://repl.it | site:http://justpaste.it | site:http://pastebin.com | site:http://jsfiddle.net | site:http://trello.com | site:*.atlassian.net | site:bitbucket.org example.com')">3rd Party Exposure</button>
+            <button onclick="runDork('inurl:gitlab example.com')">GitLab</button>
+            <button onclick="runDork('inurl:example.com /.git')">.git folder</button>
+            <button onclick="runDork('site:linkedin.com employees example.com')">Employees on LinkedIn</button>
+            <button onclick="runDork('site:example.com.com inurl:/phpinfo.php | inurl:.htaccess')">.htaccess sensitive files</button>
+            <button onclick="runDork('site:*.example.com')">Find Subdomains</button>
+            <button onclick="runDork('site:*.*.example.com')">Find Sub-Subdomains</button>
+            <button onclick="runDork('site:example.com inurl:wp-content | inurl:wp-includes')">Find WordPress #2</button>
+            <button onclick="runDork('site:atlassian.net | site:bitbucket.org example.com')">Search in Bitbucket and Atlassian</button>
             <!-- Add more buttons as needed -->
         </div>
     </div>
