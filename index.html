@@ -45,6 +45,10 @@
             <button onclick="runDork('https://www.openbugbounty.org/search/?search=example.com')">Search in OpenBugBounty</button>
             <button onclick="runDork('https://www.reddit.com/search/?q=example.com&rdt=47774')">Search in Reddit</button>
             <button onclick="runDork('https://crt.sh/?q=%25.example.com')">Search in Crt.sh</button>
+            <button onclick="runDork('https://www.shodan.io/search?query=example.com')">Search in Shodan</button>
+            <button onclick="runDork('https://censys.io/ipv4?q=example.com')">Check in Censys[ipv4]</button>
+            <button onclick="runDork('https://search.censys.io/domain?q=example.com')">Check in Censys[Domains]</button>
+            <button onclick="runDork('https://search.censys.io/certificates?q=example.com')">Check in Censys[Certs]</button>
             <button onclick="runDork('http://wwwb-dedup.us.archive.org:8083/cdx/search?url=example.com/&matchType=domain&collapse=digest&output=text&fl=original,timestamp&filter=urlkey:.*wp[-].*&limit=1000000&xx=')">Find WordPress [Wayback Machine]</button>
             <button onclick="runDork('site:digitaloceanspaces.com example.com')">Digital Ocean Spaces </button>
             <button onclick="runDork('site:firebaseio.com &quot;example.com&quot;')">Firebase</button>
@@ -58,6 +62,8 @@
             <button onclick="runDork('https://web.archive.org/web/20240000000000*/(..example.com)')">Search in Web Archive #1</button>
             <button onclick="runDork('https://web.archive.org/web/*/example.com/*')">Search in Web Archive #2</button>
             <button onclick="runDork('https://viewdns.info/reverseip/?host=example.com&t=1')">Reverse IP Lookup </button>
+            <button onclick="runDork('https://publicwww.com/websites/example.com')">Source Code-Public[WWW]</button>
+            <button onclick="runDork('https://whatcms.org/?s=example.com')">What CMS?</button>
             <button onclick="runDork('site:example.com intext:&quot;ArcGIS REST Services Directory&quot; intitle:&quot;Folder: /&quot;')">ArcGIS REST Services Directory</button>
             <button onclick="runDork('site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json')">Juicy Extensions</button>
             <button onclick="runDork('inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com')">XSS prone parameters</button>
