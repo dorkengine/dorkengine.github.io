@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    margin-bottom: 400px;
 }
 
 header {
@@ -53,7 +54,7 @@ button:hover {
 }
 
 .by-voizok {
-    margin-top: 20px; 
+    margin-top: 40px; 
     text-align: center;
 }
 
