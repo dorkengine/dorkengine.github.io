@@ -30,6 +30,7 @@ input[type="text"] {
 
 .buttons-container {
     margin-top: 20px;
+    margin-bottom: 30px; 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -51,6 +52,11 @@ button:hover {
     background-color: #444;
 }
 
+.by-voizok {
+    margin-top: 20px; 
+    text-align: center;
+}
+
 .by-voizok a {
     color: #ffffff;
     text-decoration: none;
@@ -60,7 +66,6 @@ button:hover {
 .by-voizok a:hover {
     color: #1da1f2; 
 }
-
 
 @media (max-width: 768px) {
     button {
@@ -77,4 +82,3 @@ button:hover {
         min-width: 100px; 
     }
 }
-
