@@ -4,14 +4,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    margin-bottom: 400px;
-}
-
-header {
-    background-color: #000000;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
+    margin-bottom: 300px;
 }
 
 .container {
@@ -53,8 +46,36 @@ button:hover {
     background-color: #444;
 }
 
+.google-dorks-section {
+    text-align: left;
+    margin-top: 50px;
+}
+
+.google-dorks-section h2 {
+    color: white;
+}
+
+.dork-list {
+    list-style: none;
+    padding: 0;
+}
+
+.dork-list li {
+    margin: 10px 0;
+}
+
+.dork-list a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.dork-list a:hover {
+    color: #1da1f2; 
+}
+
 .by-voizok {
-    margin-top: 40px; 
+    margin-top: 80px; 
     text-align: center;
     font-size: 25px;
 }
@@ -67,20 +88,4 @@ button:hover {
 
 .by-voizok a:hover {
     color: #1da1f2; 
-}
-
-@media (max-width: 768px) {
-    button {
-        min-width: 120px; 
-    }
-}
-
-@media (max-width: 480px) {
-    input[type="text"] {
-        width: 90%; 
-    }
-
-    button {
-        min-width: 100px; 
-    }
 }
