@@ -49,10 +49,16 @@ button:hover {
 .google-dorks-section {
     text-align: left;
     margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .google-dorks-section h2 {
     color: white;
+    text-align: center; 
+    margin-bottom: 20px; 
+    width: 100%;
 }
 
 .by-voizok {
@@ -69,4 +75,11 @@ button:hover {
 
 .by-voizok a:hover {
     color: #1da1f2; 
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; 
+    justify-content: center;
+    flex-wrap: wrap;
 }
