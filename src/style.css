@@ -55,25 +55,6 @@ button:hover {
     color: white;
 }
 
-.dork-list {
-    list-style: none;
-    padding: 0;
-}
-
-.dork-list li {
-    margin: 10px 0;
-}
-
-.dork-list a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.dork-list a:hover {
-    color: #1da1f2; 
-}
-
 .by-voizok {
     margin-top: 40px; 
     text-align: center;
