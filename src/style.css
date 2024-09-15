@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 20px;
 }
 
 h1 {
@@ -104,4 +105,48 @@ button:hover {
 
 #searchButton:hover {
     background-color: #e85c50;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    input#domainInput {
+        width: 100%;
+    }
+
+    .google-dorks-section h2 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    input#domainInput {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .google-dorks-section h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .container {
+        height: auto;
+        padding: 10px;
+    }
 }
