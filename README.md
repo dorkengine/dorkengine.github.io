@@ -4,7 +4,9 @@ Dork Engine is a web-based tool designed to facilitate advanced search queries, 
 
 ## Screenshot
 
-![dork engine](https://github.com/user-attachments/assets/5f866bb1-852e-453f-901c-aa30537e4f60)
+![dork-engine-1](https://github.com/user-attachments/assets/b11f0fb6-a365-49dc-8444-eb78850f8c4f)
+
+![dork-engine-2](https://github.com/user-attachments/assets/e8f0d8f0-c13e-4c27-805c-70ff90b00a82)
 
 
 ## Features
