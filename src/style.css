@@ -1,85 +1,107 @@
 body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    margin-bottom: 400px;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #ffffff;
 }
 
 .container {
-    text-align: center;
-    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-input[type="text"] {
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+input#domainInput {
     padding: 10px;
-    width: 100%;
-    max-width: 300px;
+    font-size: 1rem;
+    width: 300px;
     border-radius: 5px;
-    border: 1px solid #555;
-    background-color: #333;
-    color: #ffffff;
+    border: 2px solid #333;
+    background-color: #1f1f1f;
+    color: #fff;
 }
 
 .buttons-container {
     margin-top: 20px;
-    margin-bottom: 30px; 
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 button {
-    margin: 5px;
+    margin: 10px;
     padding: 10px 15px;
-    border-radius: 5px;
-    border: 1px solid #555;
-    background-color: #333;
+    font-size: 1rem;
     color: #ffffff;
+    background-color: #333333;
+    border: 2px solid #444;
+    border-radius: 5px;
     cursor: pointer;
-    flex: 1 1 auto;
-    min-width: 150px; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-    background-color: #444;
+    background-color: #555555;
+    transform: scale(1.05);
 }
 
 .google-dorks-section {
-    text-align: left;
-    margin-top: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .google-dorks-section h2 {
-    color: white;
-    text-align: center; 
-    margin-bottom: 20px; 
-    width: 100%;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.google-dorks-section button {
+    background-color: #1f1f1f;
+    border: 2px solid #ff6f61;
+    color: #ff6f61;
+}
+
+.google-dorks-section button:hover {
+    background-color: #ff6f61;
+    color: #fff;
 }
 
 .by-voizok {
-    margin-top: 40px; 
-    text-align: center;
-    font-size: 25px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #777;
 }
 
 .by-voizok a {
-    color: #ffffff;
+    color: #ff6f61;
     text-decoration: none;
-    font-weight: bold;
 }
 
 .by-voizok a:hover {
-    color: #1da1f2; 
+    text-decoration: underline;
 }
 
-.button-container {
-    display: flex;
-    gap: 10px; 
-    justify-content: center;
-    flex-wrap: wrap;
+#searchButton {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: #e85c50;
 }
