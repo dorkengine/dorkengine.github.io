@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     padding: 20px;
 }
 
@@ -107,6 +107,7 @@ button:hover {
     background-color: #e85c50;
 }
 
+/* Tablet view */
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -126,6 +127,7 @@ button:hover {
     }
 }
 
+/* Mobile view */
 @media (max-width: 480px) {
     h1 {
         font-size: 1.5rem;
