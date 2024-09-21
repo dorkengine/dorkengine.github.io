@@ -68,6 +68,7 @@
             <button onclick="runDork('site:.s3.amazonaws.com example.com')">s3 Bucket</button>
             <button onclick="runDork('site:googleapis.com &quot;example.com&quot;')">Google APIs</button>
             <button onclick="runDork('site:drive.google.com &quot;example.com&quot;')">Google drive</button>
+            <button onclick="runDork('site:example.com%20(intext:%22aws_access_key_id%22%20OR%20intext:%22aws_secret_access_key%22)%20(filetype:json%20OR%20filetype:yaml)')">Finding exposed cloud service credentials</button>
             <button onclick="runDork('site:dev.azure.com &quot;example.com&quot;')">Azure</button>
             <button onclick="runDork('site:onedrive.live.com &quot;example.com&quot;')">OneDrive</button>
             <button onclick="runDork('site:dropbox.com/s &quot;example.com&quot;')">DropBox</button>
