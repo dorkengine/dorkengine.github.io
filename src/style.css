@@ -117,7 +117,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Tablet view */
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -137,7 +136,6 @@ button:hover {
     }
 }
 
-/* Mobile view */
 @media (max-width: 480px) {
     h1 {
         font-size: 1.5rem;
@@ -163,7 +161,6 @@ button:hover {
     }
 }
 
-/* Base theme (light mode) */
 :root {
     --background-color: #ffffff;
     --text-color: #000000;
@@ -172,7 +169,6 @@ button:hover {
     --button-hover-bg-color: #555555;
 }
 
-/* Dark theme */
 [data-theme="dark"] {
     --background-color: #121212;
     --text-color: #ffffff;
@@ -181,7 +177,6 @@ button:hover {
     --button-hover-bg-color: #555555;
 }
 
-/* General Styles */
 body {
     margin: 0;
     padding: 0;
@@ -207,7 +202,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Toggle switch styles */
 .theme-toggle {
     display: flex;
     align-items: center;

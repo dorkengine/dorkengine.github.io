@@ -14,11 +14,9 @@ function runDork(dork) {
     }
 }
 
-// Get the theme switch input and label
 const themeSwitch = document.getElementById('theme-switch');
 const themeLabel = document.getElementById('theme-label');
 
-// Check for saved theme preference in localStorage
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -26,7 +24,6 @@ if (savedTheme) {
     themeLabel.textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
 }
 
-// Function to switch themes
 function toggleTheme() {
     if (themeSwitch.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -39,5 +36,4 @@ function toggleTheme() {
     }
 }
 
-// Add event listener for theme switch
 themeSwitch.addEventListener('change', toggleTheme);
