@@ -40,6 +40,7 @@
             <button onclick="runDork('site:example.com ext:action | ext:struts | ext:do')">Apache STRUTS RCE</button>
             <button onclick="runDork('site:pastebin.com example.com')">Find Pastebin Entries</button>
             <button onclick="runDork('inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:example.com')">API Docs</button>
+            <button onclick="runDork('site:example.com inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3')">API Endpoints</button>
             <button onclick="runDork('site:http://ideone.com | site:http://codebeautify.org | site:http://codeshare.io | site:http://codepen.io | site:http://repl.it | site:http://justpaste.it | site:http://pastebin.com | site:http://jsfiddle.net | site:http://trello.com | site:*.atlassian.net | site:bitbucket.org example.com')">3rd Party Exposure</button>
             <button onclick="runDork('inurl:gitlab example.com')">GitLab</button>
             <button onclick="runDork('inurl:example.com /.git')">.git folder</button>
