@@ -49,6 +49,7 @@ Dork Engine is a web-based tool designed to facilitate advanced search queries, 
 - **Apache STRUTS RCE**
 - **Find Pastebin Entries**
 - **API Docs**
+- **API Endpoints**
 - **3rd Party Exposure**
 - **GitLab**
 - **.git Folder**
