@@ -1,6 +1,6 @@
 # Dork Engine
 
-Dork Engine is a web-based tool designed to facilitate advanced search queries, commonly known as "Google dorks," to uncover potential vulnerabilities and exposed information on target domains. This tool is particularly useful for security researchers, ethical hackers, and cybersecurity enthusiasts looking to perform reconnaissance and identify sensitive data or security misconfigurations.e
+Dork Engine is a web-based tool designed to facilitate advanced search queries, commonly known as "Google dorks," to uncover potential vulnerabilities and exposed information on target domains. This tool is particularly useful for security researchers, ethical hackers, and cybersecurity enthusiasts looking to perform reconnaissance and identify sensitive data or security misconfigurations.
 
 ## Screenshot
 
