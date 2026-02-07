@@ -4,7 +4,10 @@ Dork Engine is a web-based tool designed to facilitate advanced search queries, 
 
 ## Screenshot
 
-![dork_engine](image.png)
+https://media.discordapp.net/attachments/1271416908679348307/1469705909822558261/dork_engine_1.PNG?ex=6988a1ca&is=6987504a&hm=fdea063887566e4a84c73a474610c2210170cf0411616f79e4c66fac0b408889&=&format=webp&quality=lossless&width=1706&height=823
+
+
+https://media.discordapp.net/attachments/1271416908679348307/1469705910342385776/dork_engine_2.PNG?ex=6988a1ca&is=6987504a&hm=c16290b568af554afae1b96fb0e6ed17674c6f9c85e2e93b04d037794bca7d0e&=&format=webp&quality=lossless&width=1689&height=823
 
 
 ## Features
