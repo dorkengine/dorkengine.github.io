@@ -3,248 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dork Engine</title>
-    <link rel="stylesheet" href="./src/style.css">
+    <title>Dork Engine - Google Dorking Toolkit</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="theme-toggle">
-                <label for="theme-switch" class="switch">
-                    <input type="checkbox" id="theme-switch">
-                    <span class="slider"></span>
-                </label>
-                <span id="theme-label">Dark Mode</span>
-            </div>
-        </nav>
-    </header>
+    <!-- Theme Toggler -->
+    <div class="theme-toggle-wrapper">
+        <button id="theme-toggle" aria-label="Toggle theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Main Container -->
     <div class="container">
-        <h1>Enter Target Domain:</h1>
-        <input type="text" id="domainInput" placeholder="example.com">
-        <div class="buttons-container">
-            <button onclick="runDork('site:example.com intitle:index.of')">Directory listing vulnerabilities</button>
-            <button onclick="runDork('site:example.com ext:xml | ext:conf | ext:cnf | ext:reg | ext:inf | ext:rdp | ext:cfg | ext:txt | ext:ora | ext:ini')">Exposed Configuration files</button>
-            <button onclick="runDork('site:example.com ext:sql | ext:dbf | ext:mdb')">Exposed Database files</button>
-            <button onclick="runDork('site:example.com ext:log')">Exposed Log files</button>
-            <button onclick="runDork('site:example.com inurl:wp- | inurl:wp-content | inurl:plugins | inurl:uploads | inurl:themes | inurl:download')">WordPress</button>
-            <button onclick="runDork('site:example.com ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup')">Backup and old files</button>
-            <button onclick="runDork('site:example.com inurl:login')">Login Pages</button>
-            <button onclick="runDork('site:example.com intext:&quot;sql syntax near&quot; | intext:&quot;syntax error has occurred&quot; | intext:&quot;incorrect syntax near&quot; | intext:&quot;unexpected end of SQL command&quot; | intext:&quot;Warning: mysql_connect()&quot; | intext:&quot;Warning: mysql_query()&quot; | intext:&quot;Warning: pg_connect()&quot;')">SQL Errors</button>
-            <button onclick="runDork('site:example.com ext:doc | ext:docx | ext:odt | ext:pdf | ext:rtf | ext:sxw | ext:psw | ext:ppt | ext:pptx | ext:pps | ext:csv ')">Publicly Exposed Documents</button>
-            <button onclick="runDork('site:example.com filetype:config apache')">Apache config Files</button>
-            <button onclick="runDork('example.com/robots.txt')">Robots.txt</button>
-            <button onclick="runDork('site:example.com ext:php intitle:phpinfo published')">phpinfo</button>
-            <button onclick="runDork('site:example.com  inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor')">Finding Backdoors</button>
-            <button onclick="runDork('site:example.com  inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config')">Install/Setup Files</button>
-            <button onclick="runDork('site:example.com inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http')">Open Redirects</button>
-            <button onclick="runDork('site:example.com ext:action | ext:struts | ext:do')">Apache STRUTS RCE</button>
-            <button onclick="runDork('site:pastebin.com example.com')">Find Pastebin Entries</button>
-            <button onclick="runDork('inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:example.com')">API Docs</button>
-            <button onclick="runDork('site:example.com inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3')">API Endpoints</button>
-            <button onclick="runDork('site:http://ideone.com | site:http://codebeautify.org | site:http://codeshare.io | site:http://codepen.io | site:http://repl.it | site:http://justpaste.it | site:http://pastebin.com | site:http://jsfiddle.net | site:http://trello.com | site:*.atlassian.net | site:bitbucket.org example.com')">3rd Party Exposure</button>
-            <button onclick="runDork('inurl:gitlab example.com')">GitLab</button>
-            <button onclick="runDork('inurl:example.com /.git')">.git folder</button>
-            <button onclick="runDork('site:linkedin.com employees example.com')">Employees on LinkedIn</button>
-            <button onclick="runDork('site:example.com.com inurl:/phpinfo.php | inurl:.htaccess')">.htaccess sensitive files</button>
-            <button onclick="runDork('site:jfrog.io &quot;example.com&quot;')">JFrog Artifactory</button>
-            <button onclick="runDork('site:*.example.com')">Find Subdomains</button>
-            <button onclick="runDork('site:*.*.example.com')">Find Sub-Subdomains</button>
-            <button onclick="runDork('site:example.com inurl:wp-content | inurl:wp-includes')">Find WordPress #2</button>
-            <button onclick="runDork('site:*/server-status apache')">Apache Server Status</button>
-            <button onclick="runDork('site:atlassian.net | site:bitbucket.org example.com')">Search in Bitbucket and Atlassian</button>
-            <button onclick="runDork('site:stackoverflow.com example.com')">Search in Stackoverflow</button>
-            <button onclick="runDork('https://github.com/search?q=%22*.example.com%22&type=host')">Search in GitHub</button>
-            <button onclick="runDork('https://www.openbugbounty.org/search/?search=example.com')">Search in OpenBugBounty</button>
-            <button onclick="runDork('https://www.reddit.com/search/?q=example.com&rdt=47774')">Search in Reddit</button>
-            <button onclick="runDork('https://crt.sh/?q=%25.example.com')">Search in Crt.sh</button>
-            <button onclick="runDork('https://www.shodan.io/search?query=example.com')">Search in Shodan</button>
-            <button onclick="runDork('https://censys.io/ipv4?q=example.com')">Check in Censys[ipv4]</button>
-            <button onclick="runDork('https://search.censys.io/domain?q=example.com')">Check in Censys[Domains]</button>
-            <button onclick="runDork('https://search.censys.io/certificates?q=example.com')">Check in Censys[Certs]</button>
-            <button onclick="runDork('https://securityheaders.com/?q=example.com')">Check in Security Headers</button>
-            <button onclick="runDork('http://wwwb-dedup.us.archive.org:8083/cdx/search?url=example.com/&matchType=domain&collapse=digest&output=text&fl=original,timestamp&filter=urlkey:.*wp[-].*&limit=1000000&xx=')">Find WordPress [Wayback Machine]</button>
-            <button onclick="runDork('site:digitaloceanspaces.com example.com')">Digital Ocean Spaces </button>
-            <button onclick="runDork('site:firebaseio.com &quot;example.com&quot;')">Firebase</button>
-            <button onclick="runDork('site:.s3.amazonaws.com example.com')">s3 Bucket</button>
-            <button onclick="runDork('site:googleapis.com &quot;example.com&quot;')">Google APIs</button>
-            <button onclick="runDork('site:drive.google.com &quot;example.com&quot;')">Google drive</button>
-            <button onclick="runDork('site:example.com%20(intext:%22aws_access_key_id%22%20OR%20intext:%22aws_secret_access_key%22)%20(filetype:json%20OR%20filetype:yaml)')">Finding exposed cloud service credentials</button>
-            <button onclick="runDork('site:dev.azure.com &quot;example.com&quot;')">Azure</button>
-            <button onclick="runDork('site:onedrive.live.com &quot;example.com&quot;')">OneDrive</button>
-            <button onclick="runDork('site:dropbox.com/s &quot;example.com&quot;')">DropBox</button>
-            <button onclick="runDork('site:docs.google.com inurl:&quot;/d/&quot; &quot;example.com&quot;')">Google Docs</button>
-            <button onclick="runDork('https://web.archive.org/web/20240000000000*/(..example.com)')">Search in Web Archive #1</button>
-            <button onclick="runDork('https://web.archive.org/web/*/example.com/*')">Search in Web Archive #2</button>
-            <button onclick="runDork('https://viewdns.info/reverseip/?host=example.com&t=1')">Reverse IP Lookup </button>
-            <button onclick="runDork('https://publicwww.com/websites/example.com')">Source Code-Public[WWW]</button>
-            <button onclick="runDork('https://whatcms.org/?s=example.com')">What CMS?</button>
-            <button onclick="runDork('site:example.com intext:&quot;ArcGIS REST Services Directory&quot; intitle:&quot;Folder: /&quot;')">ArcGIS REST Services Directory</button>
-            <button onclick="runDork('site:example.com ext:log | ext:txt | ext:conf | ext:cnf | ext:ini | ext:env | ext:sh | ext:bak | ext:backup | ext:swp | ext:old | ext:~ | ext:git | ext:svn | ext:htpasswd | ext:htaccess | ext:json')">Juicy Extensions</button>
-            <button onclick="runDork('inurl:q= | inurl:s= | inurl:search= | inurl:query= | inurl:keyword= | inurl:lang= inurl:& site:example.com')">XSS prone parameters</button>
-            <button onclick="runDork('site:example.com ”choose file”')">File upload endpoints</button>
-            <button onclick="runDork('site:example.com ext:txt | ext:pdf | ext:xml | ext:xls | ext:xlsx | ext:ppt | ext:pptx | ext:doc | ext:docx intext:“confidential” | intext:“Not for Public Release” | intext:”internal use only” | intext:“do not distribute”')">Sensitive Documents #1</button>
-            <button onclick="runDork('site:*.example.com (ext:doc OR ext:docx OR ext:pdf OR ext:rtf OR ext:ppt OR ext:pptx OR ext:csv OR ext:xls OR ext:xlsx OR ext:txt OR ext:xml OR ext:json OR ext:zip OR ext:rar OR ext:log OR ext:bak OR ext:conf OR ext:sql)')">Sensitive Documents #2</button>
-            <button onclick="runDork('inurl:email= | inurl:phone= | inurl:password= | inurl:secret= inurl:& site:example.com')">Sensitive Parameters</button>
-            <button onclick="runDork('inurl:http | inurl:url= | inurl:path= | inurl:dest= | inurl:html= | inurl:data= | inurl:domain= | inurl:page= inurl:& site:example.com')">SSRF Prone Parameters</button>
-            <button onclick="runDork('inurl:include | inurl:dir | inurl:detail= | inurl:file= | inurl:folder= | inurl:inc= | inurl:locate= | inurl:doc= | inurl:conf= inurl:& site:example.com')">LFI Prone Parameters</button>
-            <button onclick="runDork('inurl:cmd | inurl:exec= | inurl:query= | inurl:code= | inurl:do= | inurl:run= | inurl:read= | inurl:ping= inurl:& site:example.com')">RCE Prone Parameters</button>
-            <button onclick="runDork('inurl:/content/usergenerated | inurl:/content/dam | inurl:/jcr:content | inurl:/libs/granite | inurl:/etc/clientlibs | inurl:/content/geometrixx | inurl:/bin/wcm | inurl:/crx/de site:example.com')">Adobe Experience Manager (AEM)</button>
-            <button onclick="runDork('site:groups.google.com &quot;example.com&quot;')">Google Groups</button>
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">Dork Engine</h1>
+                <p class="subtitle">Advanced Google Dorking Toolkit</p>
+            </div>
+        </header>
 
+        <!-- Search Input Section -->
+        <div class="search-section">
+            <div class="input-wrapper">
+                <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+                <input type="text" id="domainInput" placeholder="Enter target domain (e.g., example.com)" autocomplete="off">
+            </div>
         </div>
+
+        <!-- Categories Grid -->
+        <div class="categories-grid">
+            <!-- Vulnerability Discovery -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">Vulnerability Discovery</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('site:example.com intitle:index.of')">
+                        <span class="btn-text">Directory Listings</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:xml | ext:conf | ext:cnf | ext:reg | ext:inf | ext:rdp | ext:cfg | ext:txt | ext:ora | ext:ini')">
+                        <span class="btn-text">Config Files</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:sql | ext:dbf | ext:mdb')">
+                        <span class="btn-text">Database Files</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:log')">
+                        <span class="btn-text">Log Files</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:bkf | ext:bkp | ext:bak | ext:old | ext:backup')">
+                        <span class="btn-text">Backup Files</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com  inurl:shell | inurl:backdoor | inurl:wso | inurl:cmd | shadow | passwd | boot.ini | inurl:backdoor')">
+                        <span class="btn-text">Backdoors</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Authentication & Access -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">Authentication & Access</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:login')">
+                        <span class="btn-text">Login Pages</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:admin')">
+                        <span class="btn-text">Admin Panels</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:dashboard')">
+                        <span class="btn-text">Dashboards</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:register')">
+                        <span class="btn-text">Registration</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:auth')">
+                        <span class="btn-text">Auth Pages</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Web Application Testing -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">Web Application Testing</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:wp- | inurl:wp-content | inurl:plugins | inurl:uploads | inurl:themes | inurl:download')">
+                        <span class="btn-text">WordPress</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com intext:&quot;sql syntax near&quot; | intext:&quot;syntax error has occurred&quot; | intext:&quot;incorrect syntax near&quot; | intext:&quot;unexpected end of SQL command&quot; | intext:&quot;Warning: mysql_connect()&quot; | intext:&quot;Warning: mysql_query()&quot; | intext:&quot;Warning: pg_connect()&quot;')">
+                        <span class="btn-text">SQL Errors</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:php intitle:phpinfo published')">
+                        <span class="btn-text">phpinfo</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com  inurl:readme | inurl:license | inurl:install | inurl:setup | inurl:config')">
+                        <span class="btn-text">Install/Setup</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:redir | inurl:url | inurl:redirect | inurl:return | inurl:src=http | inurl:r=http')">
+                        <span class="btn-text">Open Redirects</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:action | ext:struts | ext:do')">
+                        <span class="btn-text">Apache STRUTS</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Documents & Data -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">Documents & Data</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:doc | ext:docx | ext:odt | ext:pdf | ext:rtf | ext:sxw | ext:psw | ext:ppt | ext:pptx | ext:pps | ext:csv ')">
+                        <span class="btn-text">Documents</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:xls | ext:xlsx')">
+                        <span class="btn-text">Spreadsheets</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com filetype:pdf')">
+                        <span class="btn-text">PDF Files</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com ext:txt')">
+                        <span class="btn-text">Text Files</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Server Information -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">Server Information</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('site:example.com filetype:config apache')">
+                        <span class="btn-text">Apache Config</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('example.com/robots.txt')">
+                        <span class="btn-text">Robots.txt</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:*/server-status apache')">
+                        <span class="btn-text">Server Status</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com.com inurl:/phpinfo.php | inurl:.htaccess')">
+                        <span class="btn-text">.htaccess</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- API Endpoints -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">API & Development</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('inurl:apidocs | inurl:api-docs | inurl:swagger | inurl:api-explorer site:example.com')">
+                        <span class="btn-text">API Docs</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:example.com inurl:api | site:*/rest | site:*/v1 | site:*/v2 | site:*/v3')">
+                        <span class="btn-text">API Endpoints</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('inurl:gitlab example.com')">
+                        <span class="btn-text">GitLab</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('inurl:example.com /.git')">
+                        <span class="btn-text">.git Folder</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reconnaissance -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">Reconnaissance</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('site:*.example.com')">
+                        <span class="btn-text">Subdomains</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:*.*.example.com')">
+                        <span class="btn-text">Sub-Subdomains</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:linkedin.com employees example.com')">
+                        <span class="btn-text">Employees</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:pastebin.com example.com')">
+                        <span class="btn-text">Pastebin</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Third Party -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">External Tools</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="runDork('https://github.com/search?q=%22*.example.com%22&type=host')">
+                        <span class="btn-text">GitHub</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('https://www.shodan.io/search?query=example.com')">
+                        <span class="btn-text">Shodan</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('https://crt.sh/?q=%25.example.com')">
+                        <span class="btn-text">Crt.sh</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('https://search.censys.io/domain?q=example.com')">
+                        <span class="btn-text">Censys</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('https://www.reddit.com/search/?q=example.com&rdt=47774')">
+                        <span class="btn-text">Reddit</span>
+                    </button>
+                    <button class="dork-btn" onclick="runDork('site:stackoverflow.com example.com')">
+                        <span class="btn-text">StackOverflow</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bug Bounty Programs -->
+            <div class="category-card">
+                <div class="category-header">
+                    <h3 class="category-title">Bug Bounty Programs</h3>
+                </div>
+                <div class="dork-buttons">
+                    <button class="dork-btn" onclick="window.open('https://www.google.com/search?q=intext%3Abug%20bounty', '_blank')">
+                        <span class="btn-text">Bug Bounty</span>
+                    </button>
+                    <button class="dork-btn" onclick="window.open('https://www.google.com/search?q=inurl%3A/.well-known/security%20ext%3Atxt', '_blank')">
+                        <span class="btn-text">Security.txt</span>
+                    </button>
+                    <button class="dork-btn" onclick="window.open('https://www.google.com/search?q=intext%3Aresponsible%20disclosure', '_blank')">
+                        <span class="btn-text">Responsible Disclosure</span>
+                    </button>
+                    <button class="dork-btn" onclick="window.open('https://www.google.com/search?q=intext%3Avulnerability%20reward%20program', '_blank')">
+                        <span class="btn-text">VRP</span>
+                    </button>
+                    <button class="dork-btn" onclick="window.open('https://www.google.com/search?q=%22powered%20by%20hackerone%22', '_blank')">
+                        <span class="btn-text">HackerOne</span>
+                    </button>
+                    <button class="dork-btn" onclick="window.open('https://www.google.com/search?q=%22powered%20by%20bugcrowd%22', '_blank')">
+                        <span class="btn-text">Bugcrowd</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Created by <a href="https://github.com/voizok" target="_blank" rel="noopener">Voizok</a></p>
+            <p class="disclaimer">⚠️ For educational and authorized security research only</p>
+        </footer>
     </div>
 
-    <div class="google-dorks-section">
-    <h2>Bug Bounty Dorks</h2>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/bug%20bounty%22', '_blank')">inurl:\"/bug bounty\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/responsible%20disclosure%22', '_blank')">inurl:\"/responsible disclosure\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/security.txt%22', '_blank')">inurl:\"/security.txt\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/responsible-disclosure/reward%22', '_blank')">inurl:\"/responsible-disclosure/reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/responsible-disclosure/swag%22', '_blank')">inurl:\"/responsible-disclosure/swag\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22submit%20vulnerability%20report%22%20%7C%20%22powered%20by%20bugcrowd%22%20%7C%20%22powered%20by%20hackerone%22', '_blank')">\"submit vulnerability report\" | \"powered by bugcrowd\" | \"powered by hackerone\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A.gov.%20%22responsible%20disclosure%22', '_blank')">site:.gov. \"responsible disclosure\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3A%22we%20take%20security%20very%20seriously%22', '_blank')">intext:\"we take security very seriously\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=.com%22powered%20by%20bugcrowd%22%20-site', '_blank')">.com\"powered by bugcrowd\" -site</button>
-        <button onclick="window.open('https://www.google.com/search?q=report%20vulnerabilitysite%3A*.edu%20intext', '_blank')">report vulnerabilitysite:*.edu intext</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22%20-hackerone%20-bugcrowd%20-synack%20-openbugbountyinurl%3A%22/.well-known/security%20ext', '_blank')">\" -hackerone -bugcrowd -synack -openbugbountyinurl:\"/.well-known/security ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22security%20report%20reward%22', '_blank')">inurl:\"security report reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3A%22responsible%20disclosure%22%20university', '_blank')">intext:\"responsible disclosure\" university</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22%20%22contact%22inurl%3A%22/security%20ext', '_blank')">\" \"contact\"inurl:\"/security ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22vulnerability-disclosure-policy%22%20reward', '_blank')">inurl:\"vulnerability-disclosure-policy\" reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3A%22report%20security%20vulnerability%22', '_blank')">intext:\"report security vulnerability\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/security-report%22', '_blank')">inurl:\"/security-report\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/vulnerability-report%22', '_blank')">inurl:\"/vulnerability-report\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/responsible-disclosure%22%20ext', '_blank')">inurl:\"/responsible-disclosure\" ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/bug-bounty-program%22', '_blank')">inurl:\"/bug-bounty-program\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/bounty-program%22', '_blank')">inurl:\"/bounty-program\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/security-researchers%22', '_blank')">inurl:\"/security-researchers\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=.cominurl%3A%22/security-ext%22%20-site', '_blank')">.cominurl:\"/security-ext\" -site</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/vulnerability%20ext', '_blank')">\"inurl:\"/vulnerability ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/security-response%22', '_blank')">inurl:\"/security-response\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.org%20%22responsible%20disclosure%22', '_blank')">site:*.org \"responsible disclosure\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.gov%20%22submit%20vulnerability%22', '_blank')">site:*.gov \"submit vulnerability\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3A%22vulnerability%20submission%20program%22', '_blank')">intext:\"vulnerability submission program\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/bounty%20ext', '_blank')">\"inurl:\"/bounty ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/bug-bounty%20ext', '_blank')">\"inurl:\"/bug-bounty ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22security-reporting%22', '_blank')">inurl:\"security-reporting\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22security%20policy%20reward%22', '_blank')">inurl:\"security policy reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22responsible%20disclosure%22%20reward', '_blank')">inurl:\"responsible disclosure\" reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/responsible-disclosure%20ext', '_blank')">\"inurl:\"/responsible-disclosure ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/responsible-disclosure%20ext', '_blank')">\"inurl:\"/responsible-disclosure ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/bug-bounty%20ext', '_blank')">\"inurl:\"/bug-bounty ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/vulnerability-report%20ext', '_blank')">\"inurl:\"/vulnerability-report ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22security%20report%20bug%20reward%22', '_blank')">inurl:\"security report bug reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22vulnerability-reward-program%22', '_blank')">inurl:\"vulnerability-reward-program\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/bounty-policy%22', '_blank')">inurl:\"/bounty-policy\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22/bug-report%22', '_blank')">inurl:\"/bug-report\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22security%20vulnerability%20report%20reward%22', '_blank')">inurl:\"security vulnerability report reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.edu%20%22bug%20bounty%22', '_blank')">site:*.edu \"bug bounty\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/vuln%20ext', '_blank')">\"inurl:\"/vuln ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/security%20ext', '_blank')">\"inurl:\"/security ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22security%20vulnerability%20report%22', '_blank')">inurl:\"security vulnerability report\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/bug-bounty%20ext', '_blank')">\"inurl:\"/bug-bounty ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22inurl%3A%22/responsible-disclosure%20ext', '_blank')">\"inurl:\"/responsible-disclosure ext</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22bug%20bounty%22%20filetype', '_blank')">inurl:\"bug bounty\" filetype</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.gov%20intext%3A%22submit%20a%20vulnerability%22', '_blank')">site:*.gov intext:\"submit a vulnerability\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%20/bug%20bounty', '_blank')">inurl /bug bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%20%3A%20/%20security', '_blank')">inurl : / security</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Asecurity.txt', '_blank')">inurl:security.txt</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Asecurity%20%22reward%22', '_blank')">inurl:security \"reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%20%3A%20/responsible%20disclosure', '_blank')">inurl : /responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%20%3A%20/responsible-disclosure/%20reward', '_blank')">inurl : /responsible-disclosure/ reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%20%3A%20/%20responsible-disclosure/%20swag', '_blank')">inurl : / responsible-disclosure/ swag</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%20%3A%20/%20responsible-disclosure/%20bounty', '_blank')">inurl : / responsible-disclosure/ bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%27/responsible%20disclosure%27%20hoodie', '_blank')">inurl:'/responsible disclosure' hoodie</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20swag%20r=h%3Acom', '_blank')">responsible disclosure swag r=h:com</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20hall%20of%20fame', '_blank')">responsible disclosure hall of fame</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Aresponsible%20disclosure%20$50', '_blank')">inurl:responsible disclosure $50</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20europe', '_blank')">responsible disclosure europe</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20white%20hat', '_blank')">responsible disclosure white hat</button>
-        <button onclick="window.open('https://www.google.com/search?q=white%20hat%20program', '_blank')">white hat program</button>
-        <button onclick="window.open('https://www.google.com/search?q=insite%3A%22responsible%20disclosure%22%20-inurl%3Anl', '_blank')">insite:\"responsible disclosure\" -inurl:nl</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%20responsible%20disclosure', '_blank')">intext responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%20eu%20responsible%20disclosure', '_blank')">site eu responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%20.nl%20responsible%20disclosure', '_blank')">site .nl responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%20responsible%20disclosure', '_blank')">site responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%3Asites', '_blank')">responsible disclosure:sites</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20r=h%3Anl', '_blank')">responsible disclosure r=h:nl</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20r=h%3Auk', '_blank')">responsible disclosure r=h:uk</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20r=h%3Aeu', '_blank')">responsible disclosure r=h:eu</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20bounty%20r=h%3Anl', '_blank')">responsible disclosure bounty r=h:nl</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20bounty%20r=h%3Auk', '_blank')">responsible disclosure bounty r=h:uk</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20bounty%20r=h%3Aeu', '_blank')">responsible disclosure bounty r=h:eu</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20swag%20r=h%3Anl', '_blank')">responsible disclosure swag r=h:nl</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20swag%20r=h%3Auk', '_blank')">responsible disclosure swag r=h:uk</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20swag%20r=h%3Aeu', '_blank')">responsible disclosure swag r=h:eu</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20reward%20r=h%3Anl', '_blank')">responsible disclosure reward r=h:nl</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20reward%20r=h%3Auk', '_blank')">responsible disclosure reward r=h:uk</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20reward%20r=h%3Aeu', '_blank')">responsible disclosure reward r=h:eu</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22powered%20by%20bugcrowd%22%20-site%3Abugcrowd.com', '_blank')">\"powered by bugcrowd\" -site:bugcrowd.com</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22submit%20vulnerability%20report%22', '_blank')">\"submit vulnerability report\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22submit%20vulnerability%20report%22%20%7C%20%22powered%20by%20bugcrowd%22%20%7C%20%22powered%20by%20hackerone%22', '_blank')">\"submit vulnerability report\" | \"powered by bugcrowd\" | \"powered by hackerone\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.gov.*%20%22responsible%20disclosure%22', '_blank')">site:*.gov.* \"responsible disclosure\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3A%22we%20take%20security%20very%20seriously%22', '_blank')">intext:\"we take security very seriously\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3Aresponsibledisclosure.com', '_blank')">site:responsibledisclosure.com</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%27vulnerability-disclosure-policy%27%20reward', '_blank')">inurl:'vulnerability-disclosure-policy' reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3AVulnerability%20Disclosure%20site%3Anl', '_blank')">intext:Vulnerability Disclosure site:nl</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3AVulnerability%20Disclosure%20site%3Aeu', '_blank')">intext:Vulnerability Disclosure site:eu</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.*.nl%20intext%3Asecurity%20report%20reward', '_blank')">site:*.*.nl intext:security report reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.*.nl%20intext%3Aresponsible%20disclosure%20reward', '_blank')">site:*.*.nl intext:responsible disclosure reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22security%20vulnerability%22%20%22report%22', '_blank')">\"security vulnerability\" \"report\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%22security%20report%22', '_blank')">inurl\"security report\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22responsible%20disclosure%22%20university', '_blank')">\"responsible disclosure\" university</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A/responsible-disclosure/%20university', '_blank')">inurl:/responsible-disclosure/ university</button>
-        <button onclick="window.open('https://www.google.com/search?q=buy%20bitcoins%20%22bug%20bounty%22', '_blank')">buy bitcoins \"bug bounty\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A/security%20ext%3Atxt%20%22contact%22', '_blank')">inurl:/security ext:txt \"contact\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22powered%20by%20synack%22', '_blank')">\"powered by synack\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3Aresponsible%20disclosure%20bounty', '_blank')">intext:responsible disclosure bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%20private%20bugbountyprogram', '_blank')">inurl: private bugbountyprogram</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A/.well-known/security%20ext%3Atxt', '_blank')">inurl:/.well-known/security ext:txt</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A/.well-known/security%20ext%3Atxt%20intext%3Ahackerone', '_blank')">inurl:/.well-known/security ext:txt intext:hackerone</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A/.well-known/security%20ext%3Atxt%20-hackerone%20-bugcrowd%20-synack%20-openbugbounty', '_blank')">inurl:/.well-known/security ext:txt -hackerone -bugcrowd -synack -openbugbounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Areporting-security-issues', '_blank')">inurl:reporting-security-issues</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Asecurity-policy.txt%20ext%3Atxt', '_blank')">inurl:security-policy.txt ext:txt</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.*.*%20inurl%3Abug%20inurl%3Abounty', '_blank')">site:*.*.* inurl:bug inurl:bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3Ahelp.*.*%20inurl%3Abounty', '_blank')">site:help.*.* inurl:bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3Asupport.*.*%20intext%3Asecurity%20report%20reward', '_blank')">site:support.*.* intext:security report reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3Asecurity%20report%20monetary%20inurl%3Asecurity', '_blank')">intext:security report monetary inurl:security</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3Asecurity%20report%20reward%20inurl%3Areport', '_blank')">intext:security report reward inurl:report</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3Asecurity.*.*%20inurl%3A%20bounty', '_blank')">site:security.*.* inurl: bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.*.de%20inurl%3Abug%20inurl%3Abounty', '_blank')">site:*.*.de inurl:bug inurl:bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.*.uk%20intext%3Asecurity%20report%20reward', '_blank')">site:*.*.uk intext:security report reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.*.cn%20intext%3Asecurity%20report%20reward', '_blank')">site:*.*.cn intext:security report reward</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22vulnerability%20reporting%20policy%22', '_blank')">\"vulnerability reporting policy\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22van%20de%20melding%20met%20een%20minimum%20van%20een%22%20-site%3Aresponsibledisclosure.nl', '_blank')">\"van de melding met een minimum van een\" -site:responsibledisclosure.nl</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Aresponsible-disclosure-policy', '_blank')">inurl:responsible-disclosure-policy</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22If%20you%20believe%20you%27ve%20found%20a%20security%20vulnerability%22', '_blank')">"If you believe you've found a security vulnerability"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3A%22BugBounty%22%20and%20intext%3A%22BTC%22%20and%20intext%3A%22reward%22', '_blank')">intext:\"BugBounty\" and intext:\"BTC\" and intext:\"reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3Abounty%20inurl%3A/security', '_blank')">intext:bounty inurl:/security</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22bug%20bounty%22%20and%20intext%3A%22€%22%20and%20inurl%3A/security', '_blank')">inurl:\"bug bounty\" and intext:\"€\" and inurl:/security</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22bug%20bounty%22%20and%20intext%3A%22$%22%20and%20inurl%3A/security', '_blank')">inurl:\"bug bounty\" and intext:\"$\" and inurl:/security</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%22bug%20bounty%22%20and%20intext%3A%22INR%22%20and%20inurl%3A/security', '_blank')">inurl:\"bug bounty\" and intext:\"INR\" and inurl:/security</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A/security.txt%20%22mailto*%22%20-github.com%20%20-wikipedia.org%20-portswigger.net%20-magento', '_blank')">inurl:/security.txt \"mailto*\" -github.com  -wikipedia.org -portswigger.net -magento</button>
-        <button onclick="window.open('https://www.google.com/search?q=/trust/report-a-vulnerability', '_blank')">/trust/report-a-vulnerability</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.edu%20intext%3Asecurity%20report%20vulnerability', '_blank')">site:*.edu intext:security report vulnerability</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22cms%22%20bug%20bounty', '_blank')">\"cms\" bug bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22If%20you%20find%20a%20security%20issue%22%20%20%22reward%22', '_blank')">\"If you find a security issue\"  \"reward\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=%22responsible%20disclosure%22%20intext%3A%22you%20may%20be%20eligible%20for%20monetary%20compensation%22', '_blank')">\"responsible disclosure\" intext:\"you may be eligible for monetary compensation\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3A%20%22responsible%20disclosure%22,%20%22bug%20bounty%22,%20%22bugbounty%22', '_blank')">inurl: \"responsible disclosure\", \"bug bounty\", \"bugbounty\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=intext%3A%20we%20offer%20a%20bounty', '_blank')">intext: we offer a bounty</button>
-        <button onclick="window.open('https://www.google.com/search?q=responsible%20disclosure%20inurl%3Ain', '_blank')">responsible disclosure inurl:in</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.br%20responsible%20disclosure', '_blank')">site:*.br responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.at%20responsible%20disclosure', '_blank')">site:*.at responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.be%20responsible%20disclosure', '_blank')">site:*.be responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*.au%20responsible%20disclosure', '_blank')">site:*.au responsible disclosure</button>
-        <button onclick="window.open('https://www.google.com/search?q=site%3A*/security.txt%20%22bounty%22', '_blank')">site:*/security.txt \"bounty\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Abug%20bounty%20intext%3A%22rupees%22', '_blank')">inurl:bug bounty intext:\"rupees\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Abug%20bounty%20intext%3A%22₹%22', '_blank')">inurl:bug bounty intext:\"₹\"</button>
-        <button onclick="window.open('https://www.google.com/search?q=inurl%3Aresponsible%20disclosure%20intext%3A%22INR%22', '_blank')">inurl:responsible disclosure intext:\"INR\"</button>
-    </div>
-    
-    <div class="by-voizok">
-        by <a href="https://github.com/voizok" target="_blank">Voizok</a>
-    </div>
-        
-    <script src="./src/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
